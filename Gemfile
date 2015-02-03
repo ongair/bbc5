@@ -30,6 +30,9 @@ gem 'grape'
 gem 'mysql2', group: :production
 gem 'sidekiq'
 
+gem 'twitter'
+gem 'httparty'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
