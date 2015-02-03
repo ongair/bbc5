@@ -1,0 +1,8 @@
+---
+:verbose: true
+:logfile: ./log/sidekiq.log
+:concurrency:  25
+:queues:
+  - [whatsapp, 5]
+  - [sms, 5]
+  - [wechat, 5]
