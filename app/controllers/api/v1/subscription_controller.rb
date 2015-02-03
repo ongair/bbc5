@@ -1,6 +1,8 @@
 module Api::V1
   class SubscriptionController < ApplicationController
     
+    skip_before_action :verify_authenticity_token
+    
     # GET /version 
     def version
       render json: { version: "1.0" }
