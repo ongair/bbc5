@@ -34,6 +34,7 @@ module Api::V1
       # else
         # WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
       end
+      render json: { success: true }
     end
 
     # POST /subscribers/wechat
