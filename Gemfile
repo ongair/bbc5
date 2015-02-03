@@ -29,6 +29,8 @@ gem 'annotate', group: :development
 gem 'grape'
 gem 'mysql2', group: :production
 gem 'sidekiq'
+gem 'sinatra'
+gem 'sidetiq'
 
 gem 'twitter'
 gem 'httparty'
