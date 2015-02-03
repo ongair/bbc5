@@ -9,7 +9,7 @@ class TwitterApi
 	end
 
 	def trends location
-		client.settings(trend_location_woeid: location) # '23424803'
-		client.trends
+		# client.settings(trend_location_woeid: location) # '23424803' 1528488
+		client.trends(location)
 	end
 end
