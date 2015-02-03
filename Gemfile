@@ -26,9 +26,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'annotate', group: :development
+gem 'pry', group: :development
 gem 'grape'
 gem 'mysql2', group: :production
 gem 'sidekiq'
+gem 'sinatra'
+gem 'sidetiq'
 
 gem 'twitter'
 gem 'httparty'
