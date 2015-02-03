@@ -12,6 +12,6 @@
 #
 
 class Subscriber < ActiveRecord::Base
-  validates_uniqueness_of :external_id
+  # validates_uniqueness_of :external_id
   validates :source, presence: true
 end

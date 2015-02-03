@@ -20,6 +20,11 @@ module Api::V1
     # POST /subscribers/whatsapp
     def whatsapp_subscribers
       # Whatsapp messages from Ongair
+      if Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
+        Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
+      else
+        
+      end
     end
 
     # POST /subscribers/wechat
