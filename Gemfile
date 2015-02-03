@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'annotate', group: :development
 gem 'grape'
+gem 'mysql2', group: :production
 
 gem 'twitter'
 gem 'httparty'
