@@ -20,11 +20,11 @@ module Api::V1
     # POST /subscribers/whatsapp
     def whatsapp_subscribers
       # Whatsapp messages from Ongair
-      if Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
+      if params[:text].downcase == Rails.application.secrets.subscribe_keyword.downcase && Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
         Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
-        WhatsappWorker.perform_async(params[:phone_number], "Welcome #{params[:name]}, Thanks for subscribing to the BBC.")
-      else
-        WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
+        WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} hours bringing you the freshest news to get you up!")
+      # else
+        # WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
       end
     end
 
