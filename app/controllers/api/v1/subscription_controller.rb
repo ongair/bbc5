@@ -14,6 +14,7 @@ module Api::V1
     # POST /subscribers/sms
     def sms_subscribers
       # create a subscriber from an SMS source
+      puts params
     end
 
     # POST /subscribers/whatsapp
