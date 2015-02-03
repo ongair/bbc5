@@ -22,8 +22,9 @@ module Api::V1
       # Whatsapp messages from Ongair
       if Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
         Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
+        WhatsappWorker.perform_async(params[:phone_number], "Welcome #{params[:name]}, Thanks for subscribing to the BBC.")
       else
-        
+        WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
       end
     end
 
