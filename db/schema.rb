@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150204065435) do
   create_table "tokens", force: true do |t|
     t.string   "source"
     t.string   "value"
+    t.datetime "expiry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
