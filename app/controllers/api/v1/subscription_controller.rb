@@ -34,7 +34,7 @@ module Api::V1
     def whatsapp_subscribers
       # Whatsapp messages from Ongair
       if params[:notification_type] == "MessageReceived" 
-        if is_optin?(params[:text]) && new_subscriber?("WhatsApp",params[:phone_number])                
+       if is_opt_in?(params[:text]) && new_subscriber?("WhatsApp",params[:phone_number])                
           Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
           # WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play where we whet your appettite for the real news. Already #{Subscriber.count} people already.")
 

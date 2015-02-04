@@ -13,18 +13,21 @@
 # tech = Category.create! name: "Technology", source: "Juicer", description: "Technology News", metadata: tech_sources, keywords: keywords
 
 
-Article.create! title: "Uhuru jets back from Ethiopia AU summit", 
-  description: "President Uhuru Kenyatta and First Lady Margaret Kenyatta jetted back into the country Monday evening from Addis Ababa, Ethiopia where they attended the 24th Ordinary Session of the African Union Summit. While in Addis Ababa, the President witnessed signing of a peace deal between the two warring factions to the South Sudan conflict",
+Article.create! title: "Uhuru jets back from Ethiopia AU summit",
+  external_id: "ksjhfkjdshfdsf", 
+  summary: "President Uhuru Kenyatta and First Lady Margaret Kenyatta jetted back into the country Monday evening from Addis Ababa, Ethiopia where they attended the 24th Ordinary Session of the African Union Summit. While in Addis Ababa, the President witnessed signing of a peace deal between the two warring factions to the South Sudan conflict",
   url: "http://bit.ly/1ArMJo8",
   image_url: "http://www.kbc.co.ke/wp-content/uploads/2015/02/uhuru-back.jpg"
 
 
 Article.create! title: "#worldcancerday and other topics trending on twitter", 
-  description: "Today is world cancer day. This trended on Twitter. Click the link to see more...",
+  external_id: "ksjhfkjdsh1212",
+  summary: "Today is world cancer day. This trended on Twitter. Click the link to see more...",
   url: "http://bit.ly/1zRp40J",
   image_url: "http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzQwL3RvcDIwc2l0ZXN0LmJiMS5qcGcKcAl0aHVtYgk5NTB4NTM0IwplCWpwZw/53a03e8b/99f/top-20-sites-to-improve-your-twitter-experience-a67fe9f8e2.jpg"
 
 Article.create! title: "Ivory Coast battle DRV in tonight's AFCon match", 
-  description: "Ivory Coast midfielder Cheik Tiote may feature after recovering from an ankle injury that has kept him out of the last two matches.",
+  external_id: "ksjhfkjdsh7363",
+  summary: "Ivory Coast midfielder Cheik Tiote may feature after recovering from an ankle injury that has kept him out of the last two matches.",
   url: "http://bbc.in/1zRplRr",
   image_url: "http://news.bbcimg.co.uk/media/images/80760000/jpg/_80760933_ivcoast_drcongo.jpg"
