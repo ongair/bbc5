@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203162131) do
+ActiveRecord::Schema.define(version: 20150204042639) do
 
   create_table "articles", force: true do |t|
     t.string   "source"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20150203162131) do
     t.text     "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "metadata"
+    t.text     "description"
   end
 
   create_table "subscribers", force: true do |t|
