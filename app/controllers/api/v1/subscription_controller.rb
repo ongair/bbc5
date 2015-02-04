@@ -17,23 +17,29 @@ module Api::V1
       render json: { subcribers: Subscriber.all }
     end  
 
+    # GET /subscription/articles
+    def articles
+      render json: { articles: Article.all }
+    end
+
     # POST /subscription/sms
     def sms_subscribers
       # create a subscriber from an SMS source
       puts params
+
+      render text: "Success"
     end
 
     # POST /subscription/whatsapp
     def whatsapp_subscribers
       # Whatsapp messages from Ongair
-      if params[:text].downcase == Rails.application.secrets.subscribe_keyword.downcase && Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
-        # binding.pry
-        
-
-        Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
-        WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} bringing you the freshest news to get you up!")
-      # else
-        # WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
+      if params[:notification_type] == "MessageReceived" 
+        if is_optin?(params[:text]) && new_subscriber?("WhatsApp",params[:phone_number])                
+          Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
+          WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
+        elsif params[:text].downcase == "play"
+          WhatsappWorker.perform_async(params[:phone_number], "http://bit.ly/1zIf1cM")
+        end 
       end
       render json: { success: true }
     end
@@ -51,11 +57,12 @@ module Api::V1
         from = notification.from
 
         if is_opt_in?(text) && new_subscriber?("WeChat", from)
-          WechatWorker.perform_async("send", from, "Hi! Welcome to 4Play. We launching in #{hours_to_launch} bringing you the freshest news to get you up!")
+          Subscriber.create!(external_id: from, source: "WeChat")
+          WechatWorker.perform_async("send", from, "Hi! Welcome to 4Play. We launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
         end
       end
 
-      render xml: "<xml></xml>"
+      render xml: ""
     end
 
     # GET /subscription/wechat
@@ -69,9 +76,16 @@ module Api::V1
 
     private
 
+    def is_live?
+      Time.now > launch_time
+    end
+
+    def launch_time
+      DateTime.parse("2015-02-04 13:00:00 UTC")
+    end
 
     def hours_to_launch
-      launch_time = DateTime.parse("2015-02-04 13:00:00 UTC")
+      launch_time = launch_time
       distance_of_time_in_words(launch_time, Time.now, include_seconds: true)
     end
 
