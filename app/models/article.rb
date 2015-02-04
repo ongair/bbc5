@@ -17,4 +17,6 @@
 #
 
 class Article < ActiveRecord::Base
+  validates_uniqueness_of :external_id
+  belongs_to :category
 end
