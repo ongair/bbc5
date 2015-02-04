@@ -41,7 +41,7 @@ module Api::V1
           # send them the 4 links --- create the content for the 4 links
           text = "Hi! #{params[:name]}. Welcome to 4Play where we whet your appettite for the real news. Already #{Subscriber.count} people have joined!\r\n"
           Article.all.each_with_index do |article, index|
-            text + "#{index + 1} #{article.title} - #{article.url} \r\n"
+            text += "#{index + 1} #{article.title} - #{article.url} \r\n"
           end
 
           WhatsappWorker.perform_async(params[:phone_number], text)
