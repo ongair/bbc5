@@ -3,6 +3,8 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
+  root to: "home#index"
+
   namespace :api do
     namespace :v1 do
       get "subscription/version"
