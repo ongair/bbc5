@@ -26,12 +26,10 @@ module Api::V1
     # POST /subscription/whatsapp
     def whatsapp_subscribers
       # Whatsapp messages from Ongair
-      if params[:text].downcase == Rails.application.secrets.subscribe_keyword.downcase && Subscriber.find_by(external_id: params[:phone_number], source: "WhatsApp").nil?
-        # binding.pry
-        
+      if params[:notification_type] == "MessageReceived" && is_optin?(params[:text]) && new_subscriber?("WhatsApp",params[:phone_number])                
 
         Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
-        WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} bringing you the freshest news to get you up!")
+        WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
       # else
         # WhatsappWorker.perform_async(params[:phone_number], "We will be sending you the most interesting BBC articles in a bit.")
       end
@@ -51,7 +49,7 @@ module Api::V1
         from = notification.from
 
         if is_opt_in?(text) && new_subscriber?("WeChat", from)
-          WechatWorker.perform_async("send", from, "Hi! Welcome to 4Play. We launching in #{hours_to_launch} bringing you the freshest news to get you up!")
+          WechatWorker.perform_async("send", from, "Hi! Welcome to 4Play. We launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
         end
       end
 
