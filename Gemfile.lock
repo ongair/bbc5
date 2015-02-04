@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/sproutke/wechat.git
-  revision: 85cf6f2a26a89eaf5bb687dde73e2209e8120caf
+  revision: 9da84b297ba198de3905d39fd87321b83372db29
   specs:
-    wechat (0.0.1.3)
+    wechat (0.0.1.5)
       nokogiri (~> 1.6.6.2)
 
 GEM

@@ -76,9 +76,9 @@ module Api::V1
 
     private
 
-    def is_live?
-      Time.now > launch_time
-    end
+    # def is_live?
+    #   Time.now > launch_time
+    # end
 
     def launch_time
       DateTime.parse("2015-02-04 13:00:00 UTC")
