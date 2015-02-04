@@ -42,6 +42,12 @@ module Api::V1
     # POST /subscription/wechat
     def wechat_subscribers
       # WeChat messages
+
+      raw_xml = request.body.read
+      logger.info "WeChat XML: #{raw_xml}"
+      
+      notification = Wechat::Notification.new(raw_xml)
+      # if notification.
     end
 
     # GET /subscription/wechat
