@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204045922) do
+ActiveRecord::Schema.define(version: 20150204065435) do
 
   create_table "articles", force: true do |t|
     t.string   "source"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20150204045922) do
     t.string   "external_id"
     t.string   "name"
     t.text     "metadata"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tokens", force: true do |t|
+    t.string   "source"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
