@@ -62,7 +62,7 @@ module Api::V1
         end
       end
 
-      render xml: "<xml></xml>"
+      render xml: ""
     end
 
     # GET /subscription/wechat
@@ -76,9 +76,16 @@ module Api::V1
 
     private
 
+    def is_live?
+      Time.now > launch_time
+    end
+
+    def launch_time
+      DateTime.parse("2015-02-04 13:00:00 UTC")
+    end
 
     def hours_to_launch
-      launch_time = DateTime.parse("2015-02-04 13:00:00 UTC")
+      launch_time = launch_time
       distance_of_time_in_words(launch_time, Time.now, include_seconds: true)
     end
 
