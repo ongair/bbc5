@@ -11,6 +11,9 @@
 #  metadata     :text
 #  created_at   :datetime
 #  updated_at   :datetime
+#  category_id  :integer
+#  external_id  :string(255)
+#  image_url    :string(255)
 #
 
 class Article < ActiveRecord::Base

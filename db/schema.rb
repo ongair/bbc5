@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204042639) do
+ActiveRecord::Schema.define(version: 20150204045922) do
 
   create_table "articles", force: true do |t|
     t.string   "source"
@@ -22,7 +22,12 @@ ActiveRecord::Schema.define(version: 20150204042639) do
     t.text     "metadata"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
+    t.string   "external_id"
+    t.string   "image_url"
   end
+
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id"
 
   create_table "categories", force: true do |t|
     t.string   "name"
