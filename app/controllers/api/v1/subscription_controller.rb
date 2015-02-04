@@ -1,4 +1,6 @@
 require 'action_view'
+require 'wechat'
+
 module Api::V1
   class SubscriptionController < ApplicationController
     include ActionView::Helpers::DateHelper

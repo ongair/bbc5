@@ -36,6 +36,7 @@ gem 'sidetiq'
 gem 'twitter'
 gem 'httparty'
 gem 'juicer-client'
+gem 'wechat', git: 'https://github.com/sproutke/wechat.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/sproutke/wechat.git
+  revision: 6c12042be4d856d1771cd8942fa4c439e8d38988
+  specs:
+    wechat (0.0.1.1)
+      nokogiri (~> 1.6.6.2)
+      redis
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -97,12 +105,15 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.17)
     naught (1.0.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -226,3 +237,4 @@ DEPENDENCIES
   turbolinks
   twitter
   uglifier (>= 1.3.0)
+  wechat!
