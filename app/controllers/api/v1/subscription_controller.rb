@@ -47,7 +47,8 @@ module Api::V1
       logger.info "WeChat XML: #{raw_xml}"
       
       notification = Wechat::Notification.new(raw_xml)
-      # if notification.
+
+      render xml: "<xml></xml>"
     end
 
     # GET /subscription/wechat
