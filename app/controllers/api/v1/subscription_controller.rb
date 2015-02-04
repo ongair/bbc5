@@ -70,7 +70,7 @@ module Api::V1
         if is_opt_in?(text) && new_subscriber?("WeChat", from)
           Subscriber.create!(external_id: from, source: "WeChat")
           # WechatWorker.perform_async("send", from, "Hi! Welcome to 4Play. We launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
-          WechatWorker.perform_async("send-news", from)
+          WechatWorker.perform_async("send-news", from, "")
         end
       end
 

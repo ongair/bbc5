@@ -15,8 +15,8 @@ class WechatWorker
       client.send_message contact_id, message 
     elsif method == "send-news"
       articles = []
-      messages = Article.each.do |article|
-        articles << [ title: article.title, description: article.summary, picurl: article.image_url ]        
+      messages = Article.all.each do |article|
+        articles << { title: article.title, description: article.summary, picurl: article.image_url }
       end
       client.send_multiple_rich_messages contact_id, articles
     end    

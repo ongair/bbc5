@@ -3,7 +3,7 @@ class WechatTokenWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  sidekiq_options :queue => :data, :retry => false
+  sidekiq_options :queue => :wechat, :retry => false
   recurrence { hourly }
 
   def perform(last_occurrence, current_occurrence)
