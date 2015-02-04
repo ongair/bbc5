@@ -31,3 +31,10 @@ Article.create! title: "Ivory Coast battle DRV in tonight's AFCon match",
   summary: "Ivory Coast midfielder Cheik Tiote may feature after recovering from an ankle injury that has kept him out of the last two matches.",
   url: "http://bbc.in/1zRplRr",
   image_url: "http://news.bbcimg.co.uk/media/images/80760000/jpg/_80760933_ivcoast_drcongo.jpg"
+
+
+Article.create! title: "What was on TV on the day you were born? For some of you, there was probably no TV.", 
+  external_id: "ksjhfkjdsh7363",
+  summary: "A digital archive of the Radio Times has launched.",
+  url: " http://www.bbc.co.uk/news/blogs-magazine-monitor-29647931#sa-ns_mchannel=rss&ns_source=PublicRSS20-sa",
+  image_url: "http://news.bbcimg.co.uk/media/images/78282000/jpg/_78282396_radio-times-top.jpg"
