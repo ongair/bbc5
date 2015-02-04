@@ -36,9 +36,20 @@ module Api::V1
       if params[:notification_type] == "MessageReceived" 
         if is_optin?(params[:text]) && new_subscriber?("WhatsApp",params[:phone_number])                
           Subscriber.create!(external_id: params[:phone_number], source: "WhatsApp")
-          WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play. We're launching in #{hours_to_launch} bringing you the freshest news to get you up! #{Subscriber.count} people already up.")
-        elsif params[:text].downcase == "play"
-          WhatsappWorker.perform_async(params[:phone_number], "http://bit.ly/1zIf1cM")
+          # WhatsappWorker.perform_async(params[:phone_number], "Hi! #{params[:name]}. Welcome to 4Play where we whet your appettite for the real news. Already #{Subscriber.count} people already.")
+
+          # send them the 4 links --- create the content for the 4 links
+          text = "Hi! #{params[:name]}. Welcome to 4Play where we whet your appettite for the real news. Already #{Subscriber.count} people have joined!\r\n"
+          Article.all.each_with_index do |article, index|
+            text + "#{index + 1} #{article.title} - #{article.url} \r\n"
+          end
+
+          WhatsappWorker.perform_async(params[:phone_number], text)
+
+        else
+          WhatsappWorker.perform_async(params[:phone_number], "Not enough? Come back tomorrow for more news")
+
+          # Come back tomorrow for some more news
         end 
       end
       render json: { success: true }
