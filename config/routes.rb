@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
       post "subscription/sms" => "subscription#sms_subscribers"
       post "subscription/whatsapp" => "subscription#whatsapp_subscribers"
+      post "subscription/wechat" => "subscription#wechat_subscribers"
+      get "subscription/wechat" => "subscription#wechat_api_registration"      
     end
   end
 

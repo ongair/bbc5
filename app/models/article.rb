@@ -11,7 +11,12 @@
 #  metadata     :text
 #  created_at   :datetime
 #  updated_at   :datetime
+#  category_id  :integer
+#  external_id  :string(255)
+#  image_url    :string(255)
 #
 
 class Article < ActiveRecord::Base
+  validates_uniqueness_of :external_id
+  belongs_to :category
 end
