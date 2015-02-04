@@ -22,7 +22,7 @@ module Api::V1
       # create a subscriber from an SMS source
       puts params
 
-      render text: "OK"
+      render text: "Success"
     end
 
     # POST /subscription/whatsapp
