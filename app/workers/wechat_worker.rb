@@ -13,6 +13,12 @@ class WechatWorker
     client = Wechat::Client.new(Rails.application.secrets.wechat_app_id,Rails.application.secrets.wechat_app_secret, access_token)
     if method == "send"
       client.send_message contact_id, message 
-    end
+    elsif method == "send-news"
+      articles = []
+      messages = Article.each.do |article|
+        articles << [ title: article.title, description: article.summary, picurl: article.image_url ]        
+      end
+      client.send_multiple_rich_messages contact_id, articles
+    end    
   end
 end
